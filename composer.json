@@ -1,0 +1,13 @@
+{
+    "name": "kgaut/drupal-field-time",
+    "type": "drupal-module",
+    "description": "Provides Time and TimeRange field for Drupal 8 & 9",
+    "keywords": ["Drupal"],
+    "license": "GPL-2.0+",
+    "homepage": "https://github.com/kgaut/drupal-field-time",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://github.com/kgaut/drupal-field-time/issues"
+    },
+    "require": { }
+}
