@@ -28,8 +28,8 @@ class TimeType extends FieldItemBase {
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
     $properties['value'] = DataDefinition::create('string')
       ->setLabel(new TranslatableMarkup('Time'))
-      ->setDescription(new TranslatableMarkup('Format HH:MM'))
-      ->setSetting('maxlength', 5)
+      ->setDescription(new TranslatableMarkup('Format HH:MM:SS'))
+      ->setSetting('maxlength', 8)
       ->setRequired(TRUE);
 
     return $properties;
@@ -42,8 +42,8 @@ class TimeType extends FieldItemBase {
     $schema = [
       'columns' => [
         'value' => [
-          'type' => 'int',
-          'length' => 5,
+          'type' => 'varchar_ascii',
+          'length' => 8,
           'not null' => FALSE,
         ],
       ],

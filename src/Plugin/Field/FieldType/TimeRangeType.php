@@ -27,14 +27,14 @@ class TimeRangeType extends FieldItemBase {
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
     $properties['from'] = DataDefinition::create('string')
       ->setLabel(new TranslatableMarkup('Start time'))
-      ->setDescription(new TranslatableMarkup('Format HH:MM'))
-      ->setSetting('maxlength', 5)
+      ->setDescription(new TranslatableMarkup('Format HH:MM:SS'))
+      ->setSetting('maxlength', 8)
       ->setRequired(TRUE);
 
     $properties['to'] = DataDefinition::create('string')
       ->setLabel(new TranslatableMarkup('End time'))
-      ->setDescription(new TranslatableMarkup('Format HH:MM'))
-      ->setSetting('maxlength', 5)
+      ->setDescription(new TranslatableMarkup('Format HH:MM:SS'))
+      ->setSetting('maxlength', 8)
       ->setRequired(TRUE);
 
     return $properties;
@@ -48,12 +48,12 @@ class TimeRangeType extends FieldItemBase {
       'columns' => [
         'from' => [
           'type' => 'varchar_ascii',
-          'length' => 5,
+          'length' => 8,
           'not null' => FALSE,
         ],
         'to' => [
           'type' => 'varchar_ascii',
-          'length' => 5,
+          'length' => 8,
           'not null' => FALSE,
         ],
       ],
