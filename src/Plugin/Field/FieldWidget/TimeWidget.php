@@ -62,9 +62,13 @@ class TimeWidget extends WidgetBase {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     // Determine if we're showing seconds in the widget.
     $show_seconds = (bool) $this->getSetting('enabled');
+    $value = $items[$delta]->value ?? NULL;
+    if($show_seconds && strlen($value) === 5) {
+      $value .= ':00';
+    }
     $additional = [
       '#type' => 'time',
-      '#default_value' => $items[$delta]->value ?? NULL,
+      '#default_value' => $value,
     ];
     // Add the step attribute if we're showing seconds in the widget.
     if ($show_seconds) {

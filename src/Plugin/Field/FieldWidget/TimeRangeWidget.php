@@ -24,7 +24,8 @@ class TimeRangeWidget extends WidgetBase {
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
-
+    $show_seconds = (bool) $this->getSetting('enabled');
+    ddm($show_seconds);
     $element['from'] = [
       '#title' => $this->t('Start time'),
       '#type' => 'time',
@@ -33,18 +34,22 @@ class TimeRangeWidget extends WidgetBase {
       '#title' => $this->t('End time'),
       '#type' => 'time',
     ];
-
-    $element['from']['#default_value'] = $items[$delta]->from ?? NULL;
-    $element['to']['#default_value'] = $items[$delta]->to ?? NULL;
+    $from = $items[$delta]->from ?? NULL;
+    if($show_seconds && strlen($from) === 5) {
+      $from .= ':00';
+    }
+    $to = $items[$delta]->to ?? NULL;
+    if($show_seconds && strlen($to) === 5) {
+      $to .= ':00';
+    }
+    $element['from']['#default_value'] = $from;
+    $element['to']['#default_value'] = $to;
 
     if ($this->fieldDefinition->getFieldStorageDefinition()->getCardinality() == 1) {
       $element += [
         '#type' => 'fieldset',
       ];
     }
-
-
-    $show_seconds = (bool) $this->getSetting('enabled');
     if ($show_seconds) {
       $element['from']['#attributes']['step'] = $this->getSetting('step');
       $element['to']['#attributes']['step'] = $this->getSetting('step');
