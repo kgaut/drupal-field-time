@@ -59,7 +59,7 @@ class TimeType extends FieldItemBase {
    * {@inheritdoc}
    */
   public static function generateSampleValue(FieldDefinitionInterface $field_definition) {
-    $values['value'] = '11:55';
+    $values['value'] = '11:55:00';
     return $values;
   }
 

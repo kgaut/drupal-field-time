@@ -2,6 +2,7 @@
 
 namespace Drupal\field_time\Plugin\Field\FieldType;
 
+use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemBase;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
@@ -64,6 +65,16 @@ class TimeRangeType extends FieldItemBase {
 
     return $schema;
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function generateSampleValue(FieldDefinitionInterface $field_definition) {
+    $values['from'] = '10:55:00';
+    $values['to'] = '11:55:00';
+    return $values;
+  }
+
 
   /**
    * {@inheritdoc}
